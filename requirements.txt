@@ -1,0 +1,2 @@
+nmapthon2 ~= 0.1.5
+colorama ~= 0.4.6
