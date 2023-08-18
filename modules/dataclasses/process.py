@@ -5,8 +5,8 @@ from dataclasses import dataclass
 class ProcessOutput:
     command: str
 
-    error: str | None
-    output: str | None
+    error: bool
+    output: str
 
 
 # This class should be used when there's no error occurred and output have positive results
