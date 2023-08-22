@@ -41,10 +41,10 @@ class TestBash(unittest.TestCase):
         test_error_commands = (("exit", "1"),)  # TODO: find smth without __str__
 
         for i in test_commands:
-            self.assertIsInstance(module.iterable_to_str(i), str)
+            self.assertIsInstance(module.args_merger(i), str)
 
         for i in test_error_commands:
-            self.assertRaises(ValueError, module.iterable_to_str(i))
+            self.assertRaises(ValueError, module.args_merger(i))
 
 
 if __name__ == "__main__":
