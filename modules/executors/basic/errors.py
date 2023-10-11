@@ -1,9 +1,12 @@
 from abc import ABC
+from typing import Any
 
-from modules.dataclasses.process import ProcessOutput
+from modules.executors.basic.process import ProcessOutput
 
 
 class ErrorRule(ABC):
+    """Basic error rule class. Error rules is used to find errors in outputs."""
+
     @staticmethod
     def check(process_output: ProcessOutput) -> bool:
         """This method is used to check if given process_output contains something, that is satisfying current rule
@@ -12,8 +15,11 @@ class ErrorRule(ABC):
         raise NotImplementedError("This method is not implemented by default")
 
 
-class ErrorRuleGroup(ABC):
-    participants: tuple[ErrorRule]
+class ErrorRulesGroup(ABC):
+    participants: tuple[Any]
+
+    def __init__(self, basic: Any):
+        self.participants = tuple(basic.__subclasses__())
 
     def check(self, process_output: ProcessOutput) -> None:
         """This method is used to check if given process_output contains something, that is satisfying given rules"""
